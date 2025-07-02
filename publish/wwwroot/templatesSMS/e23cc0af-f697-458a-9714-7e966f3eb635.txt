@@ -1,0 +1,23 @@
+UPDATE [VCARONIBD1\VCARONIBD1].[BDEPOS].[dbo].[TB_USUARIO] 
+
+SET USER_ST = 'I' 
+
+WHERE COD_EMPLEADO NOT IN (SELECT CODEMP FROM ActualizarEmpleados)
+
+AND Id_Rol NOT IN ('013', '015', '016', '001', '009')
+
+-------------------------------------------------------------
+
+UPDATE [VCARONIBD1\VCARONIBD1].[BDEPOS].[dbo].[TB_USUARIO] 
+
+SET 
+    USER_NOMBRE = e.Nombres,
+    USER_APELLIDO = e.Apellidos,
+    USER_CARGO = e.RoldelSistema,
+	Id_Rol = e.IDROL
+
+FROM TB_USUARIO u
+
+INNER JOIN ActualizarEmpleados e ON u.COD_EMPLEADO = e.CODEMP
+
+WHERE u.COD_EMPLEADO = e.CODEMP

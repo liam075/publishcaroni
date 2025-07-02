@@ -1,0 +1,4 @@
+Select CodigoMotivo,NombreMotivo " & _
+    "FROM Ctrl_Ordenes_MotivosAnulacion INNER JOIN TB_Responsable_Motivo ON CodigoMotivo = CodMotivo " & _
+    "WHERE Activo = '1' AND CodResponsable='" & Mid(cboResponsable.Text, 1, 1) & "'" & _
+    "ORDER BY NombreMotivo", _
